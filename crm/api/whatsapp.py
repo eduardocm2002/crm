@@ -55,8 +55,10 @@ def on_update(doc, method):
 		},
 	)
 
-	notify_agent(doc)
-
+	try:
+		notify_agent(doc)
+	except frappe.PermissionError:
+		pass
 
 def notify_agent(doc):
 	if doc.type == "Incoming":

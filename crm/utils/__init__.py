@@ -12,7 +12,7 @@ from phonenumbers import NumberParseException
 from phonenumbers import PhoneNumberFormat as PNF
 
 
-def parse_phone_number(phone_number: str, default_country: str = "IN"):
+def parse_phone_number(phone_number: str, default_country: str = "EC"):
 	try:
 		# Parse the number
 		number = phonenumbers.parse(phone_number, default_country)
@@ -38,7 +38,7 @@ def parse_phone_number(phone_number: str, default_country: str = "IN"):
 		return {"success": False, "error": str(e)}
 
 
-def are_same_phone_number(number1: str, number2: str, default_region: str = "IN", validate: bool = True):
+def are_same_phone_number(number1: str, number2: str, default_region: str = "EC", validate: bool = True):
 	"""
 	Check if two phone numbers are the same, regardless of their format.
 
