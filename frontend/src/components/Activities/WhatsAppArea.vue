@@ -116,6 +116,29 @@
             />
             <div class="text-ink-gray-5">Document</div>
           </div>
+          <!-- PRODSIA_LOCATION_CONTACT_UI -->
+          <div
+            v-else-if="whatsapp.content_type == 'location'"
+            class="p-2"
+          >
+            <a
+              v-if="whatsapp.message?.startsWith('https://www.google.com/maps?q=')"
+              :href="whatsapp.message.split('\n')[0]"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="text-ink-blue-link underline"
+            >
+              Ver ubicación en Google Maps
+            </a>
+            <span v-else>{{ whatsapp.message || 'Ubicación sin coordenadas' }}</span>
+          </div>
+          <div
+            v-else-if="whatsapp.content_type == 'contact'"
+            class="whitespace-pre-wrap break-words p-2"
+          >
+            <div class="font-semibold">Contacto compartido</div>
+            <div>{{ whatsapp.message || 'Sin datos del contacto' }}</div>
+          </div>
           <div
             v-else-if="whatsapp.content_type == 'audio'"
             class="flex items-center gap-2"
